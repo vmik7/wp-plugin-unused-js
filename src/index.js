@@ -2,8 +2,10 @@
 
 class UnusedJSPlugin {
     apply(compiler) {
-        compiler.hooks.done.tap('Unused JS Plugin', (stats) => {
-            console.log('Hello World!');
+        compiler.hooks.compilation.tap('UnusedJSPlugin', (compilation) => {
+            compilation.hooks.finishModules.tap('UnusedJSPlugin', (modules) => {
+                console.log(modules);
+            });
         });
     }
 }

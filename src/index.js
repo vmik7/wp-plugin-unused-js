@@ -1,10 +1,16 @@
 const fsp = require('fs/promises');
 const path = require('path');
+const { validate } = require('schema-utils');
 
+const schema = require('./schema.json');
 const getAllModules = require('./getAllModules');
 
 class UnusedJSPlugin {
     constructor(options) {
+        validate(schema, options, {
+            name: 'UnusedJSPlugin',
+            baseDataPath: 'options',
+        });
         this.srcDir = options.srcDir || 'src';
     }
 

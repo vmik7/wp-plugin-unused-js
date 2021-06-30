@@ -4,5 +4,6 @@
       "srcDir": {
           "type": "string"
       }
-  }
+  },
+  "additionalProperties": false
 }

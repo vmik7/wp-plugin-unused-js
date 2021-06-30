@@ -7,11 +7,14 @@ const getAllModules = require('./getAllModules');
 
 class UnusedJSPlugin {
     constructor(options) {
+        options.srcDir = options.srcDir || 'src';
+
         validate(schema, options, {
             name: 'UnusedJSPlugin',
             baseDataPath: 'options',
         });
-        this.srcDir = options.srcDir || 'src';
+
+        this.srcDir = options.srcDir;
     }
 
     apply(compiler) {
